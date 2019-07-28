@@ -189,6 +189,10 @@ dmypy.json
 # SageMath parsed files
 
 # Environments
+.venv/
+venv/
+env/
+.env/
 
 # Spyder project settings
 
