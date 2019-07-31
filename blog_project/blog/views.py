@@ -1,6 +1,12 @@
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render
-from django.views.generic import ( ListView, DetailView ,
-                                  CreateView )
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+    DeleteView,
+)
 
 from .models import Post
 
@@ -31,11 +37,47 @@ class PostDetailView(DetailView):
     context_object_name = 'post'
 
 
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    template_name = 'blog/detail.html'
-    context_object_name = 'post'
+    template_name = 'blog/post_form.html'
+    context_object_name = 'form'
     fields = ['title', 'content',]
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return  super().form_valid(form)
+
+
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Post
+    template_name = 'blog/post_form.html'
+    context_object_name = 'form'
+    fields = ['title', 'content',]
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return  super().form_valid(form)
+
+    def test_func(self):
+        post = self.get_object()
+
+        return True if(self.request.user == post.author) else False;
+
+
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Post
+    template_name = 'blog/post_confirm_delete.html'
+    context_object_name = 'post'
+    fields = ['title', 'content', ]
+    success_url = '/'
+
+    def test_func(self):
+        post = self.get_object()
+
+        return True if(self.request.user == post.author) else False;
+
+
+
 
 
 
