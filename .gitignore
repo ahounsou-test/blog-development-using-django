@@ -1,7 +1,10 @@
 # File created using '.gitignore Generator' for Visual Studio Code: https://bit.ly/vscode-gig
 
 # Created by https://www.gitignore.io/api/linux,visualstudiocode,django,python
+
 # Edit at https://www.gitignore.io/?templates=linux,visualstudiocode,django,python
+
+set_env.sh
 
 ### Django ###
 *.log
