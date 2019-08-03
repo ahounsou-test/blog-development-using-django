@@ -7,9 +7,9 @@ from django.views.generic import (
     CreateView,
     UpdateView,
     DeleteView,
-)
+    TemplateView)
 
-from .models import Post
+from .models.blog_post import Post
 
 
 # Create your views here.
@@ -93,8 +93,11 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 
 
+class AboutView(TemplateView):
+
+    template_name = 'blog/about.html'
 
 
 
-def about(request):
-    return render(request, 'blog/about.html')
+# def about(request):
+#     return render(request, 'blog/about.html')

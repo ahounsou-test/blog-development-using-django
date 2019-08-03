@@ -36,7 +36,8 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     # installed for forms
     'crispy_forms',
-
+    # rest_framework
+    'rest_framework',
     #
     'django.contrib.admin',
     'django.contrib.auth',
@@ -61,7 +62,7 @@ ROOT_URLCONF = 'blog_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
