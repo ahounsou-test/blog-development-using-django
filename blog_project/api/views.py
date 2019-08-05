@@ -1,10 +1,11 @@
-from django.contrib.auth.models import User
+from users.models.user_model import User
 from django.shortcuts import render
 
 # Create your views here.
 from rest_framework import generics
 
-from api.serializers.blog_post import PostSerializer, UserSerializer
+from api.serializers.blog_post import PostSerializer
+from api.serializers.user import UserSerializer
 from blog.models.blog_post import Post
 
 

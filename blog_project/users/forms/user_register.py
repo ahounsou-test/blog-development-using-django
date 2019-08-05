@@ -1,18 +1,21 @@
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from django.contrib.auth.models import User
+from users.models.user_model import User
 
 from xlib.django.models import COUNTRIES_TUPLES
 from xlib.enums import Gender
 
 
 class UserRegisterForm(UserCreationForm):
+
+    username = forms.CharField(max_length=50)
+
     first_name = forms.CharField(
         required=True,
         max_length=45,
         label='First Name',
         widget=forms.TextInput(
-            attrs={'placeholder': 'John', 'class': 'form-control input-sm'}
+            attrs={'placeholder': 'John',}
         )
     )
 
@@ -21,7 +24,7 @@ class UserRegisterForm(UserCreationForm):
         max_length=45,
         label='Last Name',
         widget=forms.TextInput(
-            attrs={'placeholder': 'Woo', 'class': 'form-control input-sm'}
+            attrs={'placeholder': 'Woo',}
         )
     )
 
@@ -29,7 +32,7 @@ class UserRegisterForm(UserCreationForm):
         required=True,
         max_length=70,
         widget=forms.EmailInput(
-            attrs={'placeholder': 'email@example.com', 'class': 'form-control input-sm'}
+            attrs={'placeholder': 'email@example.com',}
         )
     )
 
@@ -37,7 +40,7 @@ class UserRegisterForm(UserCreationForm):
         required=False,
         max_length=45,
         widget=forms.TextInput(
-            attrs={'placeholder': '650-449-7300', 'class': 'form-control input-sm'}
+            attrs={'placeholder': '650-449-7300',}
         )
     )
 

@@ -146,3 +146,6 @@ EMAIL_USE_TLS = True
 # pdb.set_trace()
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+
+
+AUTH_USER_MODEL = 'users.User'
