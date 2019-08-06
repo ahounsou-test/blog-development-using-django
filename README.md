@@ -1,4 +1,4 @@
 # blog-development-using-django
 
-A Blog create using django. 
-A api that allow blog use to interact with the blog create using the django rest framework.
+A blog created using django. 
+An api that allow blog user to interact with the blog created using the django rest framework.
