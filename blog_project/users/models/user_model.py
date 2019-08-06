@@ -23,5 +23,9 @@ class User(AbstractUser):
 
     objects = UserManager()
 
+
+    def __repr__(self):
+        return f"id: {self.id} username: {self.username}"
+
     class Meta:
         db_table = 'user'

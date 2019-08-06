@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 from .forms.profile_update import ProfileUpdateFrom
 from .forms.user_register import UserRegisterForm
 from .forms.user_update import UserUpdateForm
-from .models import profile
+from .models.profile import Profile
 
 
 # Create your views here.
@@ -16,10 +16,11 @@ def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
+            # import pdb
             # pdb.set_trace()
             form.save()
-            profile(user=User.objects.get(username=request.POST['username']),
-                    bio=f" I {request.POST['username']}").save()
+            user_profile = Profile(user=User.objects.get(username=request.POST['username']))
+            user_profile.save()
 
             username = form.cleaned_data.get('username')
             messages.success(request, f'Account created for {username}! Please log in with your credential')

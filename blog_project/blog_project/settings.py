@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     # rest_framework
     'rest_framework',
+    'rest_framework.authtoken',
     #
     'django.contrib.admin',
     'django.contrib.auth',
