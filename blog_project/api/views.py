@@ -28,6 +28,15 @@ class CustomAuthToken(ObtainAuthToken):
             'email': user.email
         })
 
+# allow a user to revoke access to a token
+class RevokeAuthToken(generics.DestroyAPIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+    lookup_field = 'key'
+    queryset = Token.objects.all()
+
+
+
 class PostList(generics.ListAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
